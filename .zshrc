@@ -36,11 +36,11 @@ bindkey "^Y" redo # CTRL+Y
 
 # Aliases
 alias md="mkdir -p"
-alias rd="rmdir"
+alias rd="rm -rf"
+alias pn="pnpm"
 alias ......="cd ../../.."
 alias t="tere --filter-search"
 alias hib="systemctl hibernate"
-alias ls="lsd -Al --group-directories-first"
 alias glog="git log --all --decorate --graph --abbrev-commit --format='%C(bold yellow)%h%d%C(reset) - %C(white)%s%C(reset)%n          %C(bold blue)%ar (%ai)%C(reset) %C(bold dim green)%an%C(reset)'"
 alias adog="git log --all --decorate --oneline --graph"
 alias ddc='f() { sudo ddccontrol -r 0x10 -w $1 dev:/dev/i2c-3 };f'
@@ -56,6 +56,20 @@ export VISUAL=micro
 export EDITOR="$VISUAL"
 # fzf default find command (can also use ag (silver surfer), rg (ripgrep), etc.)
 export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
+
+# pnpm
+export PNPM_HOME="/home/timur/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/home/timur/.dotnet/tools"
+
 
 # https://github.com/mgunyho/tere
 tere() {
@@ -101,8 +115,9 @@ ZSH_THEME_GIT_PROMPT_TAG="%{$fg_bold[white]%}"
 # Customizing the prompt
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # Either show hostname in the prompt "[tom@v330:~]" or not [tom:~]:
-PROMPT='%B%F{magenta}[%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]%f%b ' # without hostname
-# PROMPT='%B%F{magenta}[%n@%m:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]%f%b ' # with hostname
+# PROMPT='%B%F{cyan}[%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]%f%b ' # without hostname
+PROMPT='%B%F{cyan}[%n@%m:%f%F{blue}%(4~|../|)%3~%f%b%B%F{cyan}]$ %f%b' # with hostname
+
 RPROMPT='%B%F{red}%(0?||Exit code: %?)%f%b'
 
 # CTRL+ARROW_RIGHT   - partially accept suggestion up to the point that the cursor moves to
@@ -128,3 +143,4 @@ bindkey "^[[B" down-line-or-beginning-search # ARROW_DOWN
 
 # Must go last (see https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=/home/timur/development/flutter/bin:$PATH
