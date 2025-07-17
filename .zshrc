@@ -106,7 +106,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
 
 # Git status in prompt with the $(gitprompt) expansion
-source ~/zsh-scripts-and-plugins/scripts/zsh-git-prompt/git-prompt.zsh
+source ~/my-zsh/zsh-scripts-and-plugins/scripts/git-prompt.zsh
 ZSH_THEME_GIT_PROMPT_PREFIX=" ("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[white]%}"
@@ -115,20 +115,20 @@ ZSH_THEME_GIT_PROMPT_TAG="%{$fg_bold[white]%}"
 # Customizing the prompt
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # Either show hostname in the prompt "[tom@v330:~]" or not [tom:~]:
-# PROMPT='%B%F{cyan}[%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]%f%b ' # without hostname
-PROMPT='%B%F{cyan}[%n@%m:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{cyan}]%f%b ' # with hostname
+# PROMPT='%B%F{cyan}[%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]$ %f%b' # without hostname
+PROMPT='%B%F{cyan}[%n@%m:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{cyan}]$ %f%b' # with hostname
 
 RPROMPT='%B%F{red}%(0?||Exit code: %?)%f%b'
 
 # CTRL+ARROW_RIGHT   - partially accept suggestion up to the point that the cursor moves to
 # ARROW_RIGHT or END - accept suggestion and replace contents of the command line buffer with the suggestion
-source ~/zsh-scripts-and-plugins/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/my-zsh/zsh-scripts-and-plugins/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # CTRL+T - paste the selected files and directories onto the command-line
-# CTRL+R - paste the selected command from history onto the command-line
+# # CTRL+R - paste the selected command from history onto the command-line
 # ALT+C  - cd into the selected directory
-source ~/zsh-scripts-and-plugins/fzf/key-bindings.zsh
+source ~/my-zsh/zsh-scripts-and-plugins/fzf/key-bindings.zsh
 # Type ** and hit tab (eg. with the cd command; works with directories, files, process IDs, hostnames, environment variables)
-source ~/zsh-scripts-and-plugins/fzf/completion.zsh
+source ~/my-zsh/zsh-scripts-and-plugins/fzf/completion.zsh
 
 # Sift through history for previous commands matching everything up to current cursor position.
 # Moves the cursor to the end of line after each match.
@@ -142,24 +142,5 @@ bindkey "^[[B" down-line-or-beginning-search # ARROW_DOWN
 #    then https://github.com/zsh-users/zsh-history-substring-search might be interesting
 
 # Must go last (see https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file)
-source ~/zsh-scripts-and-plugins/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/my-zsh/zsh-scripts-and-plugins/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=/home/timur/development/flutter/bin:$PATH
-
-autoload -Uz compinit
-compinit
-# pnpm
-export PNPM_HOME="~/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-alias pn=pnpm
-# pnpm end
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-alias python=python3
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-source <(kubectl completion zsh)
-source ~/.zsh/git-prompt.zsh/git-prompt.zsh
