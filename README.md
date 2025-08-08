@@ -1,3 +1,6 @@
+# For those who want to install this specific fork of my-zsh
+You should clone the repo in your home folder, then copy .zshrc from `~/my-zsh` to the home folder. All plugins are already installed.
+
 # Zsh without bloated plugin or theme manager
 
 It may be tempting to quickly install Oh-my-Zsh and Powerlevel10k or other plugin managers. They allow you to configure Zsh in no time without any prior knowledge. But they also bring bloat with them. Instead, I want to decide for myself what I install on my machine, when I update packages, and be able to follow and customize my configuration.
