@@ -115,8 +115,8 @@ ZSH_THEME_GIT_PROMPT_TAG="%{$fg_bold[white]%}"
 # Customizing the prompt
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # Either show hostname in the prompt "[tom@v330:~]" or not [tom:~]:
-# PROMPT='%B%F{cyan}[%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}]$ %f%b' # without hostname
-PROMPT='%B%F{cyan}[%n@%m:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{cyan}]$ %f%b' # with hostname
+# PROMPT='%B%F{cyan}%n:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{magenta}$ %f%b' # without hostname
+PROMPT='%B%F{cyan}%n@%m:%f%F{blue}%(4~|../|)%3~%f%b$(gitprompt)%B%F{cyan}$ %f%b' # with hostname
 
 RPROMPT='%B%F{red}%(0?||Exit code: %?)%f%b'
 
