@@ -52,7 +52,7 @@ alias histctx="grep -n '' ~/.histfile | fzf --delimiter : --preview 'bat --style
 # Default WORDCHARS are *?_-.[]~=/&;!#$%^(){}<>
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 # Set the default editor for sudoedit or sudo -e
-export VISUAL=micro
+export VISUAL=nano
 export EDITOR="$VISUAL"
 # fzf default find command (can also use ag (silver surfer), rg (ripgrep), etc.)
 export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
